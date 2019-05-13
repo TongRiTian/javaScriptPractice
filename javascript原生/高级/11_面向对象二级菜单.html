@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            float: left;
+            margin-left: 30px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        dl {
+            position: absolute;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<ul id="list">
+    <li>
+        一级菜单
+        <dl>
+            <dt>二级菜单</dt>
+            <dt>二级菜单</dt>
+            <dt>二级菜单</dt>
+        </dl>
+    </li>
+    <li>
+        一级菜单
+        <dl>
+            <dt>二级菜单</dt>
+            <dt>二级菜单</dt>
+            <dt>二级菜单</dt>
+        </dl>
+    </li>
+</ul>
+
+<script>
+    var List = function (id) {
+        this.id = document.getElementById(id);
+        this.lis = this.id.children;
+    }
+
+    List.prototype.init = function () {
+        var that = this;
+        for (var i = 0; i < this.lis.length; i++) {
+            this.lis[i].onmouseenter = function () {
+                that.show(this.children[0])
+            }
+
+            this.lis[i].onmouseout = function () {
+                that.hide(this.children[0])
+            }
+        }
+    }
+
+    List.prototype.show = function (obj) {
+        obj.style.display = "block";
+    }
+
+    List.prototype.hide = function (obj) {
+        obj.style.display = "none";
+    }
+
+    var list = new List("list");
+    list.init();
+</script>
+</body>
+</html>

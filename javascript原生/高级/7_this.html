@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+this指向的函数调用者，或者事件的调用者
+
+<script>
+    //1
+    function hello() {
+        console.log(this);
+    }
+
+    hello();        //指向window
+    // window.hello();
+
+
+    //2
+    function hi() {
+        console.log(this);
+    }
+
+    //创建一个对象实例，让this指向新对象，就是hi自己
+    new hi();
+
+
+    //3
+    function again() {
+        this.x = 10;        //this指向window
+        console.log(this);
+    }
+
+    again();
+    console.log(x);
+    // console.log(window.x);
+
+
+    //4
+    function again2() {
+        this.x = 20;        //this指向obj
+        console.log(this);
+    }
+
+    var obj = new again2();
+    console.log(obj.x);
+</script>
+</body>
+</html>

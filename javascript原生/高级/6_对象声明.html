@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+对象有属性、方法
+
+<script>
+    // var obj = new Object();
+    var obj = {};
+    obj.name = "Aaron";
+    obj.age = 31;
+    obj.showName = function () {
+        console.log("我的名字是" + this.name);
+    }
+
+
+    var obj2 = {
+        name: "Ruby",
+        age: "5",
+        showAge: function () {
+            console.log("我" + this.age + "岁了");
+        }
+    }
+
+
+    function Person(name, age) {
+        var obj3 = {};
+        obj3.name = name;
+        obj3.age = age;
+        obj3.showMe = function () {
+            console.log("我就是人见人爱的" + name);
+        }
+        return obj3;
+    }
+
+    obj.showName();
+    obj2.showAge();
+
+    var pipi = Person('Pipi', 18);
+    pipi.showMe();
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    //构造函数，与普通区分，首字母大写
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.showMe = function () {
+            console.log("我就是人见人爱的" + name);
+        }
+    }
+
+    var pipi = new Person("pipi", 18);
+    pipi.showMe();
+
+    var aaron = new Person("aaron", 31);
+    aaron.showMe();
+</script>
+</body>
+</html>

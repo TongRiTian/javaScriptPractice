@@ -1,0 +1,63 @@
+ <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+你无法直接访问函数内部变量
+
+
+所谓闭包，就是用一个函数去访问另一个函数的内部变量。
+优点：不产生全局变量，属性全部私有化。
+缺点：闭包中数据常驻内存，不用需要删掉，否则容易内存溢出。
+
+<script>
+
+    function outFun() {
+        var num = '10';
+    }
+
+    // console.log(num);
+
+    function outFun() {
+        var num = '10';
+
+        function inFun() {
+            console.log(num);
+        }
+
+        //注意，没括号
+        return inFun;
+    }
+
+    var demo = outFun();
+    console.log(demo);
+    demo();
+
+
+    //测试
+    function outerFun() {
+        var a = 0;
+
+        function innerFun() {
+            a++;
+            alert(a);
+        }
+
+        return innerFun;
+    }
+
+    var demo1 = outerFun();
+    demo1();
+    demo1();
+
+    var demo2 = outerFun();
+    demo2();
+    demo2();
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    //数组也是对象
+    var arr = [];
+    arr.run = function () {
+        console.log('runing');
+    }
+    arr.run();
+
+
+    //报错，aar1没有run方法
+    var arr1 = [];
+    // arr1.run();
+
+    //给Array增加hello方法
+    Array.prototype.hello = function () {
+        console.log('hello there');
+    }
+
+    arr1.hello();
+
+
+    //Array增加add方法
+    Array.prototype.add = function (arr2) {
+        return this.concat(arr2);
+    }
+
+    var a = ['js'];
+    var b = ['php'];
+
+    var c = a.concat(b);
+    console.log(c);
+
+    var d = a.add(b);
+    console.log(d);
+
+</script>
+</body>
+</html>

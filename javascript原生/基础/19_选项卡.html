@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px/19px Arial, Helvetica, sans-serif;
+            color: #666;
+        }
+
+        .tab {
+            width: 240px;
+            margin: 50px;
+        }
+
+        .tab_menu {
+            clear: both;
+        }
+
+        .tab_menu li {
+            float: left;
+            text-align: center;
+            cursor: pointer;
+            list-style: none;
+            padding: 1px 6px;
+            margin-right: 4px;
+            background: #F1F1F1;
+            border: 1px solid #898989;
+            border-bottom: none;
+        }
+
+        .tab_menu li.hover {
+            background: #DFDFDF;
+        }
+
+        .tab_menu li.selected {
+            color: #FFF;
+            background: #6D84B4;
+        }
+
+        .tab_box {
+            clear: both;
+            border: 1px solid #898989;
+            height: 100px;
+        }
+
+        .tab_box div {
+            display: none;
+        }
+
+        .tab_box div.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tab">
+    <div class="tab_menu">
+        <ul>
+            <li class="selected">时事</li>
+            <li>体育</li>
+            <li>娱乐</li>
+        </ul>
+    </div>
+    <div class="tab_box">
+        <div class="active">时事</div>
+        <div>体育</div>
+        <div>娱乐</div>
+    </div>
+</div>
+
+<script>
+
+    //1.点击哪个选项，谁就应该加上高亮样式（for循环里面绑定点击事件，要给每一个被循环的li编号）
+    //2.加上之后，就会看到兄弟也依然有高亮，所以要在加上之前，给他兄弟清除掉样式（所有li都清楚包括自己）
+    //3.样式点击加上之后，就可以把给li编好的号index赋给box，对应的box出来
+    //4.对应的box出来之前，将所有的box兄弟全部隐藏掉
+
+    var lis = document.getElementsByClassName('tab_menu')[0].getElementsByTagName('li');
+    var boxes = document.getElementsByClassName('tab_box')[0].getElementsByTagName("div");
+
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].index = i
+        lis[i].onclick=function () {
+            console.log(this.index)
+            for (var j = 0; j < lis.length; j++){
+                lis[j].className =''
+                boxes[j].className = ''
+            }
+            this.className = 'selected'
+            boxes[this.index].className = 'active'
+        }
+
+
+
+        // lis[i].index = i;  // 给每一个li的index属性赋值为i
+
+        // lis[i].onclick = function () {
+        //     for (var i = 0; i < lis.length; i++) {
+        //         lis[i].className = ''
+        //         boxes[i].className = ''
+        //     }
+        //     //当前的显示
+        //     this.className = 'selected';
+        //     boxes[this.index].className = 'active';
+        // }
+    }
+
+
+</script>
+</body>
+</html>
